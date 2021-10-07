@@ -1,35 +1,55 @@
 <ion-content [fullscreen]="true">
   <div class="screen-section">
-    <!-- <h3 class="subDisplay" >{{currentNumber}}</h3> -->
-    <br>
-    <br>
-    <h1 class="mainDisplay">{{currentNumber}}</h1>
+    <!-- <h3 class="subDisplay" >{{numeroAtual}}</h3> -->
+    <br />
+    <br />
+    <h1 class="mainDisplay">{{numeroAtual}}</h1>
   </div>
 
   <div class="button-section">
-        <button (click) = "clear()" class="special-operator" type="button" value="CE">CE</button>
-        <button (click) = "getOperation('+ and -')"class="special-operator" type="button" value="+-">±</button>
-        <button (click) = "getOperation('%')"class="special-operator" type="button" value="%">%</button>
+    <button (click)="limpar()" class="operador-especial" type="button" value="CE">
+      CE
+    </button>
+    <button (click)="fazOperacao('+ and -')" class="operador-especial" type="button" value="+-">
+      ±
+    </button>
+    <button (click)="fazOperacao('%')" class="operador-especial" type="button" value="%">
+      %
+    </button>
 
-        <button (click) = "getOperation('/')" class="operator" type="button" value="/">/</button>
+    <button (click)="fazOperacao('/')" class="operador" type="button" value="/">
+      /
+    </button>
 
-        <button (click) = "getNumber('7')" type="button" value="7">7</button>
-        <button (click) = "getNumber('8')" type="button" value="8">8</button>
-        <button (click) = "getNumber('9')" type="button" value="9">9</button>
-        <button (click) = "getOperation('*')" class="operator" type="button" value="*">×</button>
+    <button (click)="coletaONumeroDigitado('7')" type="button" value="7">7</button>
+    <button (click)="coletaONumeroDigitado('8')" type="button" value="8">8</button>
+    <button (click)="coletaONumeroDigitado('9')" type="button" value="9">9</button>
+    <button (click)="fazOperacao('*')" class="operador" type="button" value="*">
+      ×
+    </button>
 
-        <button (click) = "getNumber('4')" type="button" value="4">4</button>
-        <button (click) = "getNumber('5')" type="button" value="5">5</button>
-        <button (click) = "getNumber('6')" type="button" value="6">6</button>
-        <button (click) = "getOperation('+')" class="operator" type="button" value="+">+</button>
+    <button (click)="coletaONumeroDigitado('4')" type="button" value="4">4</button>
+    <button (click)="coletaONumeroDigitado('5')" type="button" value="5">5</button>
+    <button (click)="coletaONumeroDigitado('6')" type="button" value="6">6</button>
+    <button (click)="fazOperacao('+')" class="operador" type="button" value="+">
+      +
+    </button>
 
-        <button (click) = "getNumber('1')" type="button" value="1">1</button>
-        <button (click) = "getNumber('2')" type="button" value="2">2</button>
-        <button (click) = "getNumber('3')" type="button" value="3">3</button>
-        <button (click) = "getOperation('-')" class="operator" type="button" value="-">-</button>
+    <button (click)="coletaONumeroDigitado('1')" type="button" value="1">1</button>
+    <button (click)="coletaONumeroDigitado('2')" type="button" value="2">2</button>
+    <button (click)="coletaONumeroDigitado('3')" type="button" value="3">3</button>
+    <button (click)="fazOperacao('-')" class="operador" type="button" value="-">
+      -
+    </button>
 
-        <button (click) = "getNumber('0')" class="zero-button" type="button" value="0">0</button>
-        <button (click) = "getDecimal()" class="decimal" type="button" value=".">.</button>
-        <button (click) = "getOperation('=')" class="equal-sign" type="button" value="=">=</button>
-      </div>
+    <button (click)="coletaONumeroDigitado('0')" class="zero-button" type="button" value="0">
+      0
+    </button>
+    <button (click)="adicionaPontoDecimal()" class="decimal" type="button" value=".">
+      .
+    </button>
+    <button (click)="fazOperacao('=')" class="equal-sign" type="button" value="=">
+      =
+    </button>
+  </div>
 </ion-content>

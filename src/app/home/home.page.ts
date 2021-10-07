@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/member-ordering */
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,81 +9,71 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  result: string;
-  operation: string;
+  numeroAtual = '0';
+  primeiroNumero = null;
+  operador = null;
+  aguardarSegundoNumero = false;
 
-  currentNumber = '0';
-  firstOperand = null;
-  operator = null;
-  waitForSecondNumber = false;
+  constructor() { }
 
-  constructor() {
-    this.operation = '188 x 8';
-    this.result = '1504';
-  }
-
-  //listening methods//
-  public getNumber(v: string){
-    console.log(v);
-    if(this.waitForSecondNumber)
-    {
-      this.currentNumber = v;
-      this.waitForSecondNumber = false;
-    }else{
-      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-      this.currentNumber === '0'? this.currentNumber = v: this.currentNumber += v;
-
+  //Aguarda o usuário digitar o primeiro numero e confirma se um operador foi digitado
+  public coletaONumeroDigitado(n: string) {
+    console.log(n);
+    if (this.aguardarSegundoNumero) {
+      this.numeroAtual = n;
+      this.aguardarSegundoNumero = false;
+    } else {
+      this.numeroAtual === '0'
+        ? (this.numeroAtual = n)
+        : (this.numeroAtual += n);
     }
   }
 
-  getDecimal(){
-    if(!this.currentNumber.includes('.')){
-        this.currentNumber += '.';
+  adicionaPontoDecimal() {
+    if (!this.numeroAtual.includes('.')) {
+      this.numeroAtual += '.';
     }
   }
 
-  //Calculation operation//
-  private doCalculation(op , secondOp){
-    switch (op){
+  //Adiciona o operador//
+  private adicionaOperador(op, secondOp) {
+    switch (op) {
       case '+':
-      return this.firstOperand += secondOp;
+        return (this.primeiroNumero += secondOp);
       case '-':
-      return this.firstOperand -= secondOp;
+        return (this.primeiroNumero -= secondOp);
       case '*':
-      return this.firstOperand *= secondOp;
+        return (this.primeiroNumero *= secondOp);
       case '/':
-      return this.firstOperand /= secondOp;
+        return (this.primeiroNumero /= secondOp);
       case '=':
-      return secondOp;
+        return secondOp;
     }
   }
 
-
-  // eslint-disable-next-line @typescript-eslint/member-ordering
-  public getOperation(op: string){
+  public fazOperacao(op: string) {
     console.log(op);
 
-    if(this.firstOperand === null){
-      this.firstOperand = Number(this.currentNumber);
-
-    }else if(this.operator){
-      const result = this.doCalculation(this.operator , Number(this.currentNumber));
-      this.currentNumber = String(result);
-      this.firstOperand = result;
+    if (this.primeiroNumero === null) {
+      this.primeiroNumero = Number(this.numeroAtual);
+    } else if (this.operador) {
+      const result = this.adicionaOperador(
+        this.operador,
+        Number(this.numeroAtual)
+      );
+      this.numeroAtual = String(result);
+      this.primeiroNumero = result;
     }
-    this.operator = op;
-    this.waitForSecondNumber = true;
+    this.operador = op;
+    this.aguardarSegundoNumero = true;
 
-    console.log(this.firstOperand);
-
+    console.log(this.primeiroNumero);
   }
 
-  // eslint-disable-next-line @typescript-eslint/member-ordering
-  public clear(){
-    this.currentNumber = '0';
-    this.firstOperand = null;
-    this.operator = null;
-    this.waitForSecondNumber = false;
+  public limpar() {
+    this.numeroAtual = '0';
+    this.primeiroNumero = null;
+    this.operador = null;
+    this.aguardarSegundoNumero = false;
   }
-
 }
