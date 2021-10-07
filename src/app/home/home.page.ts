@@ -36,7 +36,7 @@ export class HomePage {
   }
 
   //Adiciona o operador//
-  private calculos(op, secondOp) {
+  private operacoes(op, secondOp) {
     switch (op) {
       case '+':
         return (this.primeiroNumero += secondOp);
@@ -57,7 +57,7 @@ export class HomePage {
     if (this.primeiroNumero === null) {
       this.primeiroNumero = Number(this.numeroAtual);
     } else if (this.operador) {
-      const resultado = this.calculos(
+      const resultado = this.operacoes(
         this.operador,
         Number(this.numeroAtual)
       );
