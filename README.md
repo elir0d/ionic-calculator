@@ -16,6 +16,14 @@ Caluladora simples desenvolvida em ionic + capacitor
 ## 🧐 Sobre <a name = "about"></a>
 Calculadora Simples Desenvolvida utilizando Iomic/Angular/Capacitor. Foi desenvolvida como parte de um projeto Universitário e está optimizada para ser compilada usando Android Studio
 
+## Tela
+<p align="center">
+  <a href="" rel="noopener">
+ <img  src="https://raw.githubusercontent.com/elir0d/ionic-calculator/main/src/assets/Calculadora.png" alt="Project logo"></a>
+</p>
+
+
+
 ### Pré-requisitos
 
 O que você precisa instalar e como instalá-los:
